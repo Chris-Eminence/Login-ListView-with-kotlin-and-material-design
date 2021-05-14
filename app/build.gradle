@@ -31,8 +31,8 @@ android {
         jvmTarget = '1.8'
     }
 
-    buildFeature{
-        viewBinding true
+    buildFeatures{
+        viewBinding = true
     }
 }
 
@@ -48,5 +48,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     //materiial design dependency
-    api 'com.google.android.material:material:1.4.0-alpha02'
+    api 'com.google.android.material:material:1.4.0-beta01'
 }
