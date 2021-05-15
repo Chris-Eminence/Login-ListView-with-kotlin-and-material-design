@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Login task</string>
+    <string name="email_hint">email@example.com</string>
 </resources>
