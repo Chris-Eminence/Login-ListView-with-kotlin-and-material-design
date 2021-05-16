@@ -10,34 +10,35 @@ import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var username_edit_text : EditText
+    private lateinit var password_edit_text : EditText
+    private lateinit var login_btn : Button
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    }
 
+        username_edit_text = findViewById(R.id.username_edit_text)
+        password_edit_text = findViewById(R.id.password_edit_text)
+        login_btn = findViewById(R.id.login_btn)
 
-    val userNameET = findViewById<EditText>(R.id.username_edit_text)
-    val passwordET = findViewById<EditText>(R.id.password_edit_text)
+        login_btn.setOnClickListener {
+            val emailAddress = username_edit_text.text.toString().trim()
+            val password_ = password_edit_text.text.toString().trim()
 
-
-    fun clickk(view: View) {
-
-        if (loginFormValidation()){
-            val intent = Intent(this, ListViewActivity::class.java)
-            startActivity(intent)
+            if (emailAddress.isEmpty()){
+                username_edit_text.error = "Email address Required"
+                return@setOnClickListener
+            }
+            else if (password_.isEmpty()){
+                password_edit_text.error = "Password Required"
+                return@setOnClickListener
+            }else{
+                val intent = Intent(this, ListViewActivity::class.java)
+                startActivity(intent)
+            }
         }
 
-    }
-
-    private fun loginFormValidation(): Boolean {
-
-        if (userNameET.getText().toString().isEmpty()) {
-            userNameET.error = "email should not be blank"
-            return false
-        } else if (passwordET.getText().toString().isEmpty()) {
-            passwordET.error = "enter your password"
-            return false
-        }
-        return true
     }
 }
